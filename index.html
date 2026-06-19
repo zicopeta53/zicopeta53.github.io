@@ -1,52 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stantique &mdash; Vintage &amp; Antique Finds</title>
+<title>Stantique &mdash; Vintage &amp; Antik</title>
 <style>
-  :root { color-scheme: light; }
-  body { font-family: Georgia, "Times New Roman", serif; max-width: 760px; margin: 0 auto;
-         padding: 48px 24px; line-height: 1.65; color: #2b2b2b; background: #faf8f4; }
-  header { border-bottom: 2px solid #c9a227; padding-bottom: 20px; margin-bottom: 28px; }
-  h1 { font-size: 2rem; margin: 0 0 6px; letter-spacing: 0.5px; }
-  .tag { color: #6b6b6b; font-style: italic; }
-  h2 { font-size: 1.25rem; margin-top: 34px; color: #4a3f2a; }
-  a { color: #8a6d1f; }
-  footer { margin-top: 48px; border-top: 1px solid #ddd; padding-top: 16px; font-size: 0.9rem; color: #777; }
-  .btn { display: inline-block; margin-top: 14px; padding: 10px 22px; background: #c9a227;
-         color: #fff; text-decoration: none; border-radius: 4px; }
+  :root{
+    --bg:#f6f2ea; --ink:#2c2823; --muted:#7d7468; --gold:#b08d57; --line:#e3dccf;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:Georgia,"Times New Roman",serif; line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px; margin:0 auto; padding:0 28px;}
+
+  /* Hero */
+  header{padding:90px 0 70px; text-align:center; border-bottom:1px solid var(--line);}
+  .mono{
+    width:62px; height:62px; margin:0 auto 26px; border:1px solid var(--gold);
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:26px; letter-spacing:1px; color:var(--gold);
+  }
+  h1{
+    margin:0; font-size:2.7rem; font-weight:400; letter-spacing:6px;
+    text-transform:uppercase;
+  }
+  .sub{
+    margin:14px 0 0; color:var(--muted); font-style:italic; font-size:1.1rem;
+    letter-spacing:.5px;
+  }
+
+  /* Sections */
+  section{padding:54px 0; border-bottom:1px solid var(--line);}
+  h2{
+    font-size:.8rem; letter-spacing:3px; text-transform:uppercase;
+    color:var(--gold); font-weight:400; margin:0 0 18px;
+  }
+  p{margin:0 0 16px;}
+  .lead{font-size:1.12rem;}
+
+  .btn{
+    display:inline-block; margin-top:10px; padding:13px 34px;
+    background:var(--ink); color:var(--bg); text-decoration:none;
+    letter-spacing:2px; text-transform:uppercase; font-size:.78rem;
+    transition:background .2s;
+  }
+  .btn:hover{background:var(--gold);}
+
+  /* Impressum */
+  .imp{font-size:.95rem; color:var(--muted);}
+  .imp strong{color:var(--ink); font-weight:400;}
+  .imp .row{margin:2px 0;}
+
+  footer{padding:40px 0 70px; text-align:center; font-size:.85rem; color:var(--muted);}
+  footer a{color:var(--gold);}
+  .disc{margin-top:14px; font-size:.78rem; line-height:1.6;}
+  a{color:var(--gold);}
 </style>
 </head>
 <body>
-<header>
-  <h1>Stantique</h1>
-  <p class="tag">Curated vintage &amp; antique pieces &mdash; each one inspected, each one with a story.</p>
-</header>
+<div class="wrap">
 
-<p>Stantique is a small independent business specialising in carefully selected vintage and
-antique homeware, decor and collectibles. We source pieces from past eras, inspect every item,
-and prepare it to find a new home.</p>
+  <header>
+    <div class="mono">S</div>
+    <h1>Stantique</h1>
+    <p class="sub">Vintage &amp; Antiquit&auml;ten &mdash; mit Geschichte, mit Charakter.</p>
+  </header>
 
-<a class="btn" href="https://www.etsy.com/de-en/shop/Stantique25">Visit our shop</a>
+  <section>
+    <h2>Atelier</h2>
+    <p class="lead">Stantique ist ein kleines, unabh&auml;ngiges Gesch&auml;ft f&uuml;r sorgf&auml;ltig
+    ausgew&auml;hlte Vintage- und Antik-St&uuml;cke &mdash; Wohnaccessoires, Dekoration und Sammlerobjekte
+    vergangener Epochen.</p>
+    <p>Jedes St&uuml;ck wird von Hand ausgew&auml;hlt, gepr&uuml;ft und liebevoll fotografiert, damit es
+    ein neues Zuhause findet. Kein Massenprodukt &mdash; nur Unikate.</p>
+  </section>
 
-<h2>What we do</h2>
-<p>We photograph, describe and present each unique item so collectors and decorators can discover
-pieces that fit their style. Our online storefront is hosted on Etsy, where every item can be
-purchased directly.</p>
+  <section>
+    <h2>Shop</h2>
+    <p>Unsere St&uuml;cke sind direkt in unserem Onlineshop erh&auml;ltlich.</p>
+    <a class="btn" href="https://www.etsy.com/de-en/shop/Stantique25">Zum Etsy-Shop</a>
+  </section>
 
-<h2>Pinterest</h2>
-<p>We share photographs of our own inventory on Pinterest to showcase our pieces. Posts link back
-to the corresponding product so interested buyers can learn more.</p>
+  <section>
+    <h2>Pinterest</h2>
+    <p>Wir teilen Fotografien unserer eigenen St&uuml;cke auf Pinterest, um sie vorzustellen. Jeder Pin
+    verlinkt zur passenden Anzeige in unserem Shop.</p>
+  </section>
 
-<h2>Contact</h2>
-<p>Questions about an item or our business? Email
-<a href="mailto:sudeteoantique@gmail.com">sudeteoantique@gmail.com</a>.</p>
+  <section class="imp">
+    <h2>Impressum</h2>
+    <div class="row"><strong>Teoman Boylu</strong></div>
+    <div class="row">Hirschhorner Str. 14</div>
+    <div class="row">69436 Sch&ouml;nbrunn, Deutschland</div>
+    <div class="row">Tel.: +49 152 26995979</div>
+    <div class="row">E-Mail: <a href="mailto:zicopeta53@gmail.com">zicopeta53@gmail.com</a></div>
+    <div class="row">USt-IdNr.: DE458758369</div>
+  </section>
 
-<footer>
-  <p>&copy; 2026 Stantique. &middot; <a href="privacy.html">Privacy Policy</a></p>
-  <p>Stantique is not endorsed by, affiliated with, or sponsored by Pinterest. Pinterest is a
-  trademark of Pinterest, Inc.</p>
-</footer>
+  <footer>
+    <p>&copy; 2026 Stantique &middot; <a href="privacy.html">Datenschutz</a></p>
+    <p class="disc">Stantique wird von Pinterest weder unterst&uuml;tzt noch gesponsert und ist nicht mit
+    Pinterest verbunden. &bdquo;Pinterest&ldquo; ist eine Marke der Pinterest, Inc.</p>
+  </footer>
+
+</div>
 </body>
 </html>
