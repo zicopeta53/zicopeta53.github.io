@@ -7,91 +7,169 @@
 <title>Stantique &mdash; Vintage &amp; Antik</title>
 <style>
   :root{
-    --bg:#f6f2ea; --ink:#2c2823; --muted:#7d7468; --gold:#b08d57; --line:#e3dccf;
+    --bg:#faf4e8; --ink:#2c2010; --muted:#8a7560; --gold:#a07638;
+    --rust:#b85c2a; --line:#ddd0b8; --card:#f3ead8;
     color-scheme:light;
   }
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box; margin:0; padding:0;}
   body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:Georgia,"Times New Roman",serif; line-height:1.75;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:680px; margin:0 auto; padding:0 28px;}
-
-  /* Hero */
-  header{padding:90px 0 70px; text-align:center; border-bottom:1px solid var(--line);}
-  .mono{
-    width:62px; height:62px; margin:0 auto 26px; border:1px solid var(--gold);
-    border-radius:50%; display:flex; align-items:center; justify-content:center;
-    font-size:26px; letter-spacing:1px; color:var(--gold);
-  }
-  h1{
-    margin:0; font-size:2.7rem; font-weight:400; letter-spacing:6px;
-    text-transform:uppercase;
-  }
-  .sub{
-    margin:14px 0 0; color:var(--muted); font-style:italic; font-size:1.1rem;
-    letter-spacing:.5px;
+    background:var(--bg); color:var(--ink);
+    font-family:Georgia,"Times New Roman",serif;
+    line-height:1.8; -webkit-font-smoothing:antialiased;
   }
 
-  /* Sections */
-  section{padding:54px 0; border-bottom:1px solid var(--line);}
+  /* subtle grain */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity:.6; z-index:0;
+  }
+
+  .wrap{max-width:660px; margin:0 auto; padding:0 32px; position:relative; z-index:1;}
+
+  /* ── Ornament helper ── */
+  .orn{display:flex; align-items:center; gap:14px; color:var(--line); margin:0 auto;}
+  .orn span{color:var(--gold); font-size:1.1rem;}
+  .orn::before,.orn::after{content:""; flex:1; height:1px; background:var(--line);}
+
+  /* ── Hero ── */
+  header{padding:72px 0 60px; text-align:center;}
+  .badge{
+    width:74px; height:74px; border-radius:50%; margin:0 auto 28px;
+    border:2px solid var(--gold); display:flex; align-items:center; justify-content:center;
+    background:var(--card); box-shadow:0 0 0 5px var(--bg),0 0 0 6px var(--line);
+  }
+  .badge span{font-size:28px; color:var(--gold); letter-spacing:1px;}
+  h1{font-size:2.6rem; font-weight:400; letter-spacing:8px; text-transform:uppercase; line-height:1.2;}
+  .tagline{
+    margin:12px 0 0; color:var(--muted); font-style:italic; font-size:1.05rem;
+  }
+
+  /* ── Big Etsy CTA ── */
+  .cta-wrap{
+    padding:52px 0 56px; text-align:center; border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .cta-label{
+    font-size:.72rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--muted); margin-bottom:22px;
+  }
+  .etsy-btn{
+    display:inline-block;
+    background:var(--rust); color:#fdf8f0;
+    text-decoration:none; font-family:Georgia,serif;
+    font-size:1.05rem; letter-spacing:3px; text-transform:uppercase;
+    padding:20px 56px; border:2px solid #8c3e18;
+    box-shadow:4px 4px 0 #8c3e18;
+    transition:all .15s;
+    position:relative;
+  }
+  .etsy-btn:hover{
+    background:#8c3e18; box-shadow:2px 2px 0 #6a2e10;
+    transform:translate(2px,2px);
+  }
+  .etsy-btn::before{
+    content:"✦"; position:absolute; left:20px; top:50%;
+    transform:translateY(-50%); opacity:.6; font-size:.8rem;
+  }
+  .etsy-btn::after{
+    content:"✦"; position:absolute; right:20px; top:50%;
+    transform:translateY(-50%); opacity:.6; font-size:.8rem;
+  }
+  .cta-sub{
+    margin-top:18px; font-size:.82rem; color:var(--muted); font-style:italic;
+  }
+
+  /* ── Sections ── */
+  section{padding:48px 0; border-bottom:1px solid var(--line);}
   h2{
-    font-size:.8rem; letter-spacing:3px; text-transform:uppercase;
-    color:var(--gold); font-weight:400; margin:0 0 18px;
+    font-size:.72rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold); font-weight:400; margin-bottom:16px;
   }
-  p{margin:0 0 16px;}
-  .lead{font-size:1.12rem;}
+  p{margin-bottom:14px;}
+  .lead{font-size:1.08rem;}
 
-  .btn{
-    display:inline-block; margin-top:10px; padding:13px 34px;
-    background:var(--ink); color:var(--bg); text-decoration:none;
-    letter-spacing:2px; text-transform:uppercase; font-size:.78rem;
-    transition:background .2s;
+  /* ── Feature boxes ── */
+  .boxes{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:24px;}
+  .box{
+    background:var(--card); border:1px solid var(--line);
+    padding:20px 16px; text-align:center;
   }
-  .btn:hover{background:var(--gold);}
+  .box .icon{font-size:1.6rem; margin-bottom:8px;}
+  .box p{font-size:.85rem; color:var(--muted); margin:0; line-height:1.5;}
 
-  /* Impressum */
-  .imp{font-size:.95rem; color:var(--muted);}
+  /* ── Impressum ── */
+  .imp{font-size:.92rem; color:var(--muted); line-height:1.9;}
   .imp strong{color:var(--ink); font-weight:400;}
-  .imp .row{margin:2px 0;}
+  .imp .row{margin:1px 0;}
+  a{color:var(--gold); text-decoration:none;}
+  a:hover{text-decoration:underline;}
 
-  footer{padding:40px 0 70px; text-align:center; font-size:.85rem; color:var(--muted);}
+  footer{
+    padding:36px 0 64px; text-align:center;
+    font-size:.82rem; color:var(--muted);
+  }
   footer a{color:var(--gold);}
-  .disc{margin-top:14px; font-size:.78rem; line-height:1.6;}
-  a{color:var(--gold);}
+  .disc{margin-top:12px; font-size:.75rem; line-height:1.7; max-width:480px; margin-inline:auto;}
+
+  @media(max-width:520px){
+    h1{font-size:1.9rem; letter-spacing:5px;}
+    .boxes{grid-template-columns:1fr;}
+    .etsy-btn{padding:18px 36px; font-size:.95rem;}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header>
-    <div class="mono">S</div>
+    <div class="badge"><span>S</span></div>
     <h1>Stantique</h1>
-    <p class="sub">Vintage &amp; Antiquit&auml;ten &mdash; mit Geschichte, mit Charakter.</p>
+    <p class="tagline">Vintage &amp; Antiquit&auml;ten &mdash; mit Geschichte, mit Charakter.</p>
   </header>
 
+  <!-- BIG ETSY BUTTON -->
+  <div class="cta-wrap">
+    <p class="cta-label">Alle St&uuml;cke entdecken</p>
+    <a class="etsy-btn" href="https://stantique25.etsy.com" target="_blank" rel="noopener">
+      Jetzt im Shop st&ouml;bern
+    </a>
+    <p class="cta-sub">Handverlesene Unikate &middot; direkt bei Etsy kaufen</p>
+  </div>
+
+  <!-- About -->
   <section>
     <h2>Atelier</h2>
     <p class="lead">Stantique ist ein kleines, unabh&auml;ngiges Gesch&auml;ft f&uuml;r sorgf&auml;ltig
-    ausgew&auml;hlte Vintage- und Antik-St&uuml;cke &mdash; Wohnaccessoires, Dekoration und Sammlerobjekte
-    vergangener Epochen.</p>
-    <p>Jedes St&uuml;ck wird von Hand ausgew&auml;hlt, gepr&uuml;ft und liebevoll fotografiert, damit es
-    ein neues Zuhause findet. Kein Massenprodukt &mdash; nur Unikate.</p>
+    ausgew&auml;hlte Vintage- und Antik-St&uuml;cke &mdash; Wohnaccessoires, Dekoration und
+    Sammlerobjekte vergangener Epochen.</p>
+    <p>Jedes St&uuml;ck wird von Hand ausgew&auml;hlt, gepr&uuml;ft und liebevoll fotografiert,
+    damit es ein neues Zuhause findet. Kein Massenprodukt &mdash; nur Unikate.</p>
+
+    <div class="boxes">
+      <div class="box">
+        <div class="icon">&#x2698;</div>
+        <p>Handverlesen &amp; gepr&uuml;ft</p>
+      </div>
+      <div class="box">
+        <div class="icon">&#x1F4E6;</div>
+        <p>Sicher verpackt &amp; verschickt</p>
+      </div>
+      <div class="box">
+        <div class="icon">&#x2B50;</div>
+        <p>Echte Vintage-Unikate</p>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Shop</h2>
-    <p>Unsere St&uuml;cke sind direkt in unserem Onlineshop erh&auml;ltlich.</p>
-    <a class="btn" href="https://www.etsy.com/de-en/shop/Stantique25">Zum Etsy-Shop</a>
-  </section>
-
+  <!-- Pinterest note -->
   <section>
     <h2>Pinterest</h2>
-    <p>Wir teilen Fotografien unserer eigenen St&uuml;cke auf Pinterest, um sie vorzustellen. Jeder Pin
-    verlinkt zur passenden Anzeige in unserem Shop.</p>
+    <p>Wir teilen Fotografien unserer eigenen St&uuml;cke auf Pinterest. Jeder Pin
+    verlinkt direkt zur passenden Anzeige in unserem Etsy-Shop.</p>
   </section>
 
+  <!-- Impressum -->
   <section class="imp">
     <h2>Impressum</h2>
     <div class="row"><strong>Teoman Boylu</strong></div>
@@ -104,8 +182,8 @@
 
   <footer>
     <p>&copy; 2026 Stantique &middot; <a href="privacy.html">Datenschutz</a></p>
-    <p class="disc">Stantique wird von Pinterest weder unterst&uuml;tzt noch gesponsert und ist nicht mit
-    Pinterest verbunden. &bdquo;Pinterest&ldquo; ist eine Marke der Pinterest, Inc.</p>
+    <p class="disc">Stantique wird von Pinterest weder unterst&uuml;tzt noch gesponsert
+    und ist nicht mit Pinterest verbunden. &bdquo;Pinterest&ldquo; ist eine Marke der Pinterest, Inc.</p>
   </footer>
 
 </div>
