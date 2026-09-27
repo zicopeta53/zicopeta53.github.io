@@ -68,7 +68,7 @@ def text_von(el):
     return text.strip()
 
 
-def zu_markdown(xml_bytes, slug):
+def zu_markdown(xml_bytes, slug, quelle=None):
     root = ET.fromstring(xml_bytes)
     normen = root.findall("norm")
     if not normen:
@@ -81,7 +81,8 @@ def zu_markdown(xml_bytes, slug):
              for s in kopf.findall("standangabe")]
 
     out = [f"# {titel} ({abk})", ""]
-    out.append(f"Quelle: https://www.gesetze-im-internet.de/{slug}/  ")
+    quelle = quelle or f"https://www.gesetze-im-internet.de/{slug}/"
+    out.append(f"Quelle: {quelle}  ")
     out.append(f"Abgerufen: {datetime.date.today().isoformat()}")
     for s in stand:
         if s:
@@ -124,18 +125,46 @@ socket.getaddrinfo = lambda host, *a, **k: [
     x for x in _getaddrinfo(host, *a, **k) if x[0] == socket.AF_INET]
 
 
-def lade(slug, versuche=3):
-    req = urllib.request.Request(URL.format(slug=slug), headers={
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) gesetze-laden/1.0"})
+HEADERS = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) gesetze-laden/1.0"}
+ARCHIV = "https://web.archive.org/web/{datum}id_/" + URL
+_direkt_ok = True  # nach dem ersten Timeout nur noch das Archiv versuchen
+
+
+def _hole(url, timeout, versuche):
+    req = urllib.request.Request(url, headers=HEADERS)
     for versuch in range(1, versuche + 1):
         try:
-            with urllib.request.urlopen(req, timeout=30) as r:
-                daten = r.read()
-            break
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read(), r.geturl()
         except OSError:
             if versuch == versuche:
                 raise
             time.sleep(5 * versuch)
+
+
+def lade(slug):
+    """Gibt (xml_bytes, quelle) zurück. Erst amtliche Seite, sonst die
+    neueste Kopie derselben Datei im Internet Archive."""
+    global _direkt_ok
+    if _direkt_ok:
+        try:
+            daten, _ = _hole(URL.format(slug=slug), timeout=20, versuche=1)
+            quelle = f"https://www.gesetze-im-internet.de/{slug}/"
+            return _entpacke(daten), quelle
+        except OSError as e:
+            print(f"     {slug}: gesetze-im-internet.de nicht erreichbar ({e}), "
+                  "nehme Internet Archive", file=sys.stderr)
+            _direkt_ok = False
+    heute = datetime.date.today().strftime("%Y%m%d")
+    daten, url = _hole(ARCHIV.format(datum=heute, slug=slug), timeout=60, versuche=3)
+    # url enthält den Zeitstempel der Kopie: .../web/20260915123456id_/...
+    stempel = url.split("/web/", 1)[1][:8] if "/web/" in url else "?"
+    quelle = (f"https://www.gesetze-im-internet.de/{slug}/ "
+              f"(Archivkopie vom {stempel[:4]}-{stempel[4:6]}-{stempel[6:8]}, {url})")
+    return _entpacke(daten), quelle
+
+
+def _entpacke(daten):
     with zipfile.ZipFile(io.BytesIO(daten)) as z:
         name = next(n for n in z.namelist() if n.endswith(".xml"))
         return z.read(name)
@@ -166,7 +195,8 @@ def main(args):
     fehler = 0
     for slug in args or list(GESETZE):
         try:
-            md, titel, abk = zu_markdown(lade(slug), slug)
+            xml_bytes, quelle = lade(slug)
+            md, titel, abk = zu_markdown(xml_bytes, slug, quelle)
             (ZIEL / f"{slug}.md").write_text(md, encoding="utf-8")
             print(f"OK   {slug:12} {abk}: {md.count(chr(10) + '## ')} Vorschriften")
         except Exception as e:  # ein Gesetz darf fehlschlagen, der Rest läuft weiter

@@ -26,10 +26,10 @@ jobs:
       - name: Verbindung prüfen
         continue-on-error: true
         run: |
-          for opt in -4 -6; do
-            curl $opt -sS -o /dev/null --max-time 20 \
-              -w "curl $opt: HTTP %{http_code}, IP %{remote_ip}, %{time_total}s\n" \
-              https://www.gesetze-im-internet.de/stgb/xml.zip || true
+          for url in https://www.gesetze-im-internet.de/stgb/xml.zip \
+                     https://web.archive.org/web/2026id_/https://www.gesetze-im-internet.de/stgb/xml.zip; do
+            curl -4 -sSL -o /dev/null --max-time 20 \
+              -w "HTTP %{http_code}, %{time_total}s: $url\n" "$url" || true
           done
       - name: Gesetze herunterladen
         run: python3 tools/gesetze_laden.py

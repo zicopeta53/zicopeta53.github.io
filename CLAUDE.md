@@ -16,7 +16,11 @@ Ordnungswidrigkeiten, Verkehr, Drogen …):
    lesen. Nicht aus dem Gedächtnis zitieren.
 2. **Mit Wortlaut belegen.** Paragraph, Absatz und Nummer nennen
    (z. B. „§ 243 Abs. 1 S. 2 Nr. 1 StGB“) und die entscheidende Stelle wörtlich
-   zitieren. Den Stand (Abrufdatum aus `gesetze/README.md`) angeben.
+   zitieren. Den Stand angeben: die Zeilen „Stand:“ oben in der Gesetzesdatei
+   (letzte berücksichtigte Änderung). Ist gesetze-im-internet.de für GitHub
+   gesperrt, stammt der Text aus einer Archivkopie – deren Datum steht in der
+   Zeile „Quelle:“. Bei älteren Kopien darauf hinweisen, dass sich seither
+   etwas geändert haben kann.
 3. **Wie ein Anwalt prüfen:** Tatbestand (objektiv/subjektiv), Rechtswidrigkeit,
    Schuld, Strafrahmen, mögliche Qualifikationen/Privilegierungen, Verjährung
    (§§ 78 ff. StGB), Strafantrag (§ 77 StGB), und verfahrensrechtlich:
