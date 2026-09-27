@@ -23,6 +23,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Verbindung prüfen
+        continue-on-error: true
+        run: |
+          for opt in -4 -6; do
+            curl $opt -sS -o /dev/null --max-time 20 \
+              -w "curl $opt: HTTP %{http_code}, IP %{remote_ip}, %{time_total}s\n" \
+              https://www.gesetze-im-internet.de/stgb/xml.zip || true
+          done
       - name: Gesetze herunterladen
         run: python3 tools/gesetze_laden.py
       - name: Änderungen committen

@@ -10,7 +10,9 @@ Ergebnis: gesetze/<slug>.md, eine Datei pro Gesetz, jede Vorschrift als
 """
 import datetime
 import io
+import socket
 import sys
+import time
 import urllib.request
 import xml.etree.ElementTree as ET
 import zipfile
@@ -116,11 +118,24 @@ def zu_markdown(xml_bytes, slug):
     return "\n".join(out).rstrip() + "\n", titel, abk
 
 
-def lade(slug):
-    req = urllib.request.Request(URL.format(slug=slug),
-                                 headers={"User-Agent": "gesetze-laden/1.0"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        daten = r.read()
+# Nur IPv4 verwenden: über IPv6 hängt die Verbindung auf manchen Servern.
+_getaddrinfo = socket.getaddrinfo
+socket.getaddrinfo = lambda host, *a, **k: [
+    x for x in _getaddrinfo(host, *a, **k) if x[0] == socket.AF_INET]
+
+
+def lade(slug, versuche=3):
+    req = urllib.request.Request(URL.format(slug=slug), headers={
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) gesetze-laden/1.0"})
+    for versuch in range(1, versuche + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                daten = r.read()
+            break
+        except OSError:
+            if versuch == versuche:
+                raise
+            time.sleep(5 * versuch)
     with zipfile.ZipFile(io.BytesIO(daten)) as z:
         name = next(n for n in z.namelist() if n.endswith(".xml"))
         return z.read(name)
