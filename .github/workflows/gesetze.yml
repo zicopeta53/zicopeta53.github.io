@@ -1,0 +1,39 @@
+name: Gesetze aktualisieren
+
+on:
+  push:
+    paths:
+      - "tools/gesetze_laden.py"
+      - ".github/workflows/gesetze.yml"
+  schedule:
+    - cron: "17 4 1 * *" # monatlich am 1., 04:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gesetze-${{ github.ref }}
+
+jobs:
+  laden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Gesetze herunterladen
+        run: python3 tools/gesetze_laden.py
+      - name: Änderungen committen
+        run: |
+          git add gesetze/
+          # Nur das Abrufdatum geändert? Dann nichts committen.
+          if git diff --cached --quiet -I '^Abgerufen: ' -I '^\| \[' ; then
+            echo "Keine inhaltlichen Änderungen."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Gesetze aktualisiert ($(date -u +%Y-%m-%d))"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
