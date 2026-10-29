@@ -1,7 +1,7 @@
 # Gesetz zum Umgang mit Konsumcannabis (KCanG)
 
 Quelle: https://www.gesetze-im-internet.de/kcang/ (Archivkopie vom 2026-02-19, https://web.archive.org/web/20260219093127id_/https://www.gesetze-im-internet.de/kcang/xml.zip)  
-Abgerufen: 2026-09-27
+Abgerufen: 2026-10-29
 - Stand: Geändert durch Art. 1 G v. 20.6.2024 I Nr. 207
 
 ### Kapitel 1 – Allgemeine Vorschriften

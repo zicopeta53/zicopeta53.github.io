@@ -1,7 +1,7 @@
 # Jugendgerichtsgesetz (JGG)
 
 Quelle: https://www.gesetze-im-internet.de/jgg/ (Archivkopie vom 2026-03-10, https://web.archive.org/web/20260310150437id_/https://www.gesetze-im-internet.de/jgg/xml.zip)  
-Abgerufen: 2026-09-27
+Abgerufen: 2026-10-29
 - Stand: Neugefasst durch Bek. v. 11.12.1974 I 3427;
 - Stand: zuletzt geändert durch Art. 21 G v. 25.6.2021 I 2099
 

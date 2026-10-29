@@ -1,7 +1,7 @@
 # Straßenverkehrsgesetz (StVG)
 
 Quelle: https://www.gesetze-im-internet.de/stvg/ (Archivkopie vom 2026-03-10, https://web.archive.org/web/20260310150913id_/https://www.gesetze-im-internet.de/stvg/xml.zip)  
-Abgerufen: 2026-09-27
+Abgerufen: 2026-10-29
 - Stand: Neugefasst durch Bek. v. 5.3.2003 I 310, 919;
 - Stand: zuletzt geändert durch Art. 14 G v. 9.1.2026 I Nr. 7
 - Stand: Änderung durch Art. 3 G v. 3.2.2026 I Nr. 30 textlich nachgewiesen, dokumentarisch noch nicht abschließend bearbeitet
