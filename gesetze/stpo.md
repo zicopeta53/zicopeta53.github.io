@@ -1,7 +1,7 @@
 # Strafprozeßordnung (StPO)
 
 Quelle: https://www.gesetze-im-internet.de/stpo/ (Archivkopie vom 2026-03-10, https://web.archive.org/web/20260310150906id_/https://www.gesetze-im-internet.de/stpo/xml.zip)  
-Abgerufen: 2026-09-27
+Abgerufen: 2026-10-29
 - Stand: Neugefasst durch Bek. v. 7.4.1987 I 1074, 1319;
 - Stand: zuletzt geändert durch Art. 1 G v. 8.12.2025 I Nr. 319
 - Stand: Mittelbare Änderung durch Art. 37 G v. 8.12.2025 I Nr. 319 ist berücksichtigt

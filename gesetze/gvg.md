@@ -1,7 +1,7 @@
 # Gerichtsverfassungsgesetz (GVG)
 
 Quelle: https://www.gesetze-im-internet.de/gvg/ (Archivkopie vom 2026-03-10, https://web.archive.org/web/20260310150356id_/https://www.gesetze-im-internet.de/gvg/xml.zip)  
-Abgerufen: 2026-09-27
+Abgerufen: 2026-10-29
 - Stand: Neugefasst durch Bek. v. 9.5.1975 I 1077;
 - Stand: zuletzt geändert durch Art. 1 G v. 8.12.2025 I Nr. 318
 - Stand: Mittelbare Änderung durch Art. 39 G v. 8.12.2025 I Nr. 319 ist berücksichtigt

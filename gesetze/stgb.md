@@ -1,7 +1,7 @@
 # Strafgesetzbuch (StGB)
 
 Quelle: https://www.gesetze-im-internet.de/stgb/ (Archivkopie vom 2026-03-10, https://web.archive.org/web/20260310150904id_/https://www.gesetze-im-internet.de/stgb/xml.zip)  
-Abgerufen: 2026-09-27
+Abgerufen: 2026-10-29
 - Stand: Neugefasst durch Bek. v. 13.11.1998 I 3322;
 - Stand: zuletzt geändert durch Art. 1 G v. 23.2.2026 I Nr. 46
 

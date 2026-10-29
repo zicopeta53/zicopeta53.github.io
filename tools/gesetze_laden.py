@@ -28,6 +28,12 @@ GESETZE = {
     "owig_1968": "Gesetz über Ordnungswidrigkeiten",
     "stvg": "Straßenverkehrsgesetz",
     "gvg": "Gerichtsverfassungsgesetz",
+    # Arbeitsrecht
+    "burlg": "Bundesurlaubsgesetz",
+    "kschg": "Kündigungsschutzgesetz",
+    "efzg": "Entgeltfortzahlungsgesetz",
+    "arbzg": "Arbeitszeitgesetz",
+    "tzbfg": "Teilzeit- und Befristungsgesetz",
 }
 
 ZIEL = Path(__file__).resolve().parent.parent / "gesetze"

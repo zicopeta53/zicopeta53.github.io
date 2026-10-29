@@ -3,7 +3,8 @@
 ## Strafrecht-Nachschlagewerk (`gesetze/`)
 
 Im Ordner `gesetze/` liegen die aktuellen Texte des deutschen Strafrechts als
-Markdown (StGB, StPO, JGG, BtMG, KCanG, OWiG, StVG, GVG), geladen von
+Markdown (StGB, StPO, JGG, BtMG, KCanG, OWiG, StVG, GVG) sowie einige
+Arbeitsgesetze (BUrlG, KSchG, EFZG, ArbZG, TzBfG), geladen von
 gesetze-im-internet.de. Die Action `.github/workflows/gesetze.yml` aktualisiert
 sie monatlich; `gesetze/README.md` zeigt das Abrufdatum.
 
