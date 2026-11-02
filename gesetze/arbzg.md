@@ -1,7 +1,7 @@
 # Arbeitszeitgesetz (ArbZG)
 
 Quelle: https://www.gesetze-im-internet.de/arbzg/ (Archivkopie vom 2026-03-10, https://web.archive.org/web/20260310145851id_/https://www.gesetze-im-internet.de/arbzg/xml.zip)  
-Abgerufen: 2026-10-29
+Abgerufen: 2026-11-02
 - Stand: Zuletzt geändert durch Art. 52 G v. 23.10.2024 I Nr. 323
 
 ### Erster Abschnitt – Allgemeine Vorschriften

@@ -1,7 +1,7 @@
 # Gesetz über Teilzeitarbeit und befristete Arbeitsverträge (TzBfG)
 
 Quelle: https://www.gesetze-im-internet.de/tzbfg/ (Archivkopie vom 2026-03-10, https://web.archive.org/web/20260310150949id_/https://www.gesetze-im-internet.de/tzbfg/xml.zip)  
-Abgerufen: 2026-10-29
+Abgerufen: 2026-11-02
 - Stand: Zuletzt geändert durch Art. 7 G v. 20.7.2022 I 1174
 
 ### Erster Abschnitt – Allgemeine Vorschriften
