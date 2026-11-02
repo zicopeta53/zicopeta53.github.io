@@ -34,6 +34,7 @@ GESETZE = {
     "efzg": "Entgeltfortzahlungsgesetz",
     "arbzg": "Arbeitszeitgesetz",
     "tzbfg": "Teilzeit- und Befristungsgesetz",
+    "brao": "Bundesrechtsanwaltsordnung",
 }
 
 ZIEL = Path(__file__).resolve().parent.parent / "gesetze"
